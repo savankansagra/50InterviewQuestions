@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class _3_RemoveDuplicate {
 	
@@ -10,13 +13,13 @@ public class _3_RemoveDuplicate {
 		
 		int[] result = _3_RemoveDuplicateOb.removeDuplicates(input);
 		
-		System.out.println(result.toString());
+		//System.out.println(result.toString());
 		
 		
 	}
 	
 	public int[] removeDuplicates(int[] arr){
-		List<Integer> lookup = new ArrayList<Integer>();
+		Set<Integer> lookup = new HashSet<>();
 		
 		for(int i:arr) {
 			if(lookup.contains(i)) {
@@ -27,8 +30,9 @@ public class _3_RemoveDuplicate {
 		}
 		
 		int[] result = new int[lookup.size()];
-		for(int i=0;i<lookup.size();i++) {
-			result[i] = lookup.get(i);
+		int i=0;
+		for(Iterator<Integer> itr = lookup.iterator();itr.hasNext();) {
+			result[i++]=itr.next();
 		}
 		
 		return result;
